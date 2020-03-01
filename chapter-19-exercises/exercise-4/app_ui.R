@@ -4,10 +4,17 @@ library("shiny")
 # We'll begin by defining some of the UI elements as variables
 # This helps keep the code organized and easier to debug
 
+
 # Define a variable `intro_panel` for your first page. It should be a
 # `tabPanel()` with a title "Introduction" to represent the first tab.
 # This layout will contain the following elements:
+ui <- navbarPage(
   
+  
+)  
+
+
+intro_panel
   # A `titlePanel()` with the text "Income Inequality"
   
 
@@ -22,7 +29,10 @@ library("shiny")
 
   # A paragraph containing a hyperlink `a()` to the source of the article at
   # https://www.nytimes.com/interactive/2017/08/07/opinion/leonhardt-income-inequality.html
-
+p(a(
+  href="https://www.nytimes.com/interactive/2017/08/07/opinion/leonhardt-income-inequality.html",
+  "(Source)"
+))
 
   # A paragraph containing a 1-2 sentence description of what the diagram
   # shows. Your paragraph should include both `strong()` and emphasized `em()`
@@ -34,6 +44,10 @@ library("shiny")
 # Define a variable `sidebar_content` as a `sidebarPanel()` UI element
 # containing the following information:
 
+sidebar_content <- sidebarPanel(
+  sliderInput(inputid= "precentile", label="income percentile",min=0 max=100, value= c(0,100)
+)
+
   # A `sliderInput()` for the 'percentile' value, labeled "Income Percentile".
   # This slider should let the user pick a range between 0 and 100
 
@@ -43,9 +57,13 @@ library("shiny")
 
   # A `plotOutput()` element showing the 'plot' output (defined in the server)
 
+plotOutput(outputId = "plot"),
 
   # A paragraph with a hyperlink to the data source
   # http://gabriel-zucman.eu/usdina/
+
+p("data frame",
+  a(herf ="http://gabriel-zucman.eu/usdina/"))
 
 # Define a variable `growth_panel` for your second page. It should be a
 # `tabPanel()` with a title "Growth Chart" to represent the second tab.
@@ -53,7 +71,7 @@ library("shiny")
 
   # A `titlePanel()` with the text "Income growth 1980-2014"
   
-
+growth_panel <- mainPainel
   # A `sidebarLayout()` to create two columns.
   # The sidebar layout will contain elements:
 
